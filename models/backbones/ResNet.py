@@ -79,6 +79,9 @@ class ResNet(nn.Module):
         self.conv4_x = self.make_layer(Bottleneck, 256, self.layers[2], stride=2)
         self.conv5_x = self.make_layer(Bottleneck, 512, self.layers[3], stride=2)
 
+    def stages(self):
+        return [self.conv1, self.conv2_x, self.conv3_x, self.conv4_x, self.conv5_x]
+
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2_x(x)
